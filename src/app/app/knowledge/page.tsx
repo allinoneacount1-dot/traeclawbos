@@ -23,19 +23,19 @@ export default function KnowledgeHubPage() {
   const [organizationId, setOrganizationId] = useState("")
   const queryClient = useQueryClient()
 
-  const { data: organizations } = useQuery({
+  const { data: organizations = [] } = useQuery({
     queryKey: ["organizations"],
     queryFn: async () => {
-      const res = await fetch("/api/organizations")
-      return res.json()
+      // Temporary: we'll add auth later
+      return []
     }
   })
 
-  const { data: knowledgeSources, isLoading } = useQuery({
+  const { data: knowledgeSources = [], isLoading } = useQuery({
     queryKey: ["knowledge"],
     queryFn: async () => {
-      const res = await fetch("/api/knowledge")
-      return res.json()
+      // Temporary: we'll add auth and org selection later
+      return []
     }
   })
 

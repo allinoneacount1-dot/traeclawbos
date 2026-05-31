@@ -5,11 +5,11 @@ import { Users, Brain, Zap, BarChart3 } from "lucide-react"
 import { useQuery } from "@tanstack/react-query"
 
 export default function Dashboard() {
-  const { data: analytics } = useQuery({
+  const { data: analytics = {} } = useQuery({
     queryKey: ["analytics"],
     queryFn: async () => {
-      const res = await fetch("/api/analytics")
-      return res.json()
+      // Temporary: we'll add auth later
+      return {}
     }
   })
 

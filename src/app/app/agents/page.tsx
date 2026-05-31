@@ -31,21 +31,19 @@ export default function AgentsPage() {
   const queryClient = useQueryClient()
 
   // Fetch organizations first for dropdown
-  const { data: organizations } = useQuery({
+  const { data: organizations = [] } = useQuery({
     queryKey: ["organizations"],
     queryFn: async () => {
-      const res = await fetch("/api/organizations")
-      if (!res.ok) throw new Error("Failed to fetch organizations")
-      return res.json()
+      // Temporary: we'll add auth later
+      return []
     }
   })
 
-  const { data: agents, isLoading } = useQuery({
+  const { data: agents = [], isLoading } = useQuery({
     queryKey: ["agents"],
     queryFn: async () => {
-      const res = await fetch("/api/agents")
-      if (!res.ok) throw new Error("Failed to fetch agents")
-      return res.json()
+      // Temporary: we'll add auth and org selection later
+      return []
     }
   })
 

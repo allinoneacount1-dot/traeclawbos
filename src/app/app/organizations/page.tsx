@@ -14,12 +14,11 @@ export default function OrganizationsPage() {
   const [tokenAddress, setTokenAddress] = useState("")
   const queryClient = useQueryClient()
 
-  const { data: organizations, isLoading } = useQuery({
+  const { data: organizations = [], isLoading } = useQuery({
     queryKey: ["organizations"],
     queryFn: async () => {
-      const res = await fetch("/api/organizations")
-      if (!res.ok) throw new Error("Failed to fetch organizations")
-      return res.json()
+      // Temporary: we'll add auth later
+      return []
     },
   })
 

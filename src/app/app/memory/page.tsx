@@ -21,19 +21,19 @@ export default function MemoryGraphPage() {
   const [agentId, setAgentId] = useState("")
   const queryClient = useQueryClient()
 
-  const { data: agents } = useQuery({
+  const { data: agents = [] } = useQuery({
     queryKey: ["agents"],
     queryFn: async () => {
-      const res = await fetch("/api/agents")
-      return res.json()
+      // Temporary: we'll add auth and org selection later
+      return []
     }
   })
 
-  const { data: memories, isLoading } = useQuery({
+  const { data: memories = [], isLoading } = useQuery({
     queryKey: ["memories"],
     queryFn: async () => {
-      const res = await fetch("/api/memories")
-      return res.json()
+      // Temporary: we'll add auth and org selection later
+      return []
     }
   })
 
